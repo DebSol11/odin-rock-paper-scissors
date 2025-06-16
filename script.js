@@ -1,3 +1,4 @@
+// Declaration and initialization of global variables
 let computerChoice = "";
 let result = null;
 
@@ -17,7 +18,7 @@ function getComputerChoice() {
   getRandomIntExp(3);
   if (result == 0) {
     computerChoice = "ROCK";
-    return computerChoice
+    return computerChoice;
   } else if (result == 1) {
     computerChoice = "PAPER";
     return computerChoice;
@@ -30,4 +31,14 @@ function getComputerChoice() {
   }
 }
 
-console.log(getComputerChoice());
+/*Pseudocode:
+  -aks for user input using the prompt method
+  -store the user input in a variable
+  -return that variable to use it's value */
+function getHumanChoice() {
+  let userInput = prompt("Please choose Rock, Paper or Scissor by typing it into the field");
+  return userInput;
+}
+
+console.log("You chose " + getHumanChoice());
+console.log("The computer chose " + getComputerChoice());
