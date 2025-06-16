@@ -1,6 +1,8 @@
 // Declaration and initialization of global variables
 let computerChoice = "";
 let result = null;
+let humanScore = "0";
+let computerScore = "0";
 
 // Written as function declaration
 function getRandomIntDec(max) {
