@@ -72,26 +72,32 @@ function playRound(humanChoice, computerChoice) {
       `You both chose the same.
       This is a draw!`);
   } else if (humanChoice == "ROCK" && computerChoice == "PAPER") {
+    computerScore++;
     return console.log(
       `${displayChoices}
       You lose. PAPER beats ROCK!`);
   } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS") {
+    humanScore++;
     return console.log(
       `${displayChoices}
       You win. ROCK beats SCISSORS!`);
   } else if (humanChoice == "PAPER" && computerChoice == "ROCK") {
+    humanScore++;
     return console.log(
       `${displayChoices}
       You win. PAPER beats ROCK!`);
   } else if (humanChoice == "PAPER" && computerChoice == "SCISSORS") {
+    computerScore++;
     return console.log(
       `${displayChoices}
       You lose. SCISSORS cut PAPER!`);
   } else if (humanChoice == "SCISSORS" && computerChoice == "ROCK") {
+    computerScore++;
     return console.log(
       `${displayChoices}
       You lose. ROCK destroys SCISSORS!`);
   } else if (humanChoice == "SCISSORS" && computerChoice == "PAPER") {
+    humanScore++;
     return console.log(
       `${displayChoices}
       You win. SCISSORS cut PAPER in pieces!`);
@@ -104,3 +110,6 @@ const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
+
+console.log(computerScore);
+console.log(humanScore);
