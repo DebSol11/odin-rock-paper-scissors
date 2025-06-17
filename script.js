@@ -1,8 +1,8 @@
 // Declaration and initialization of global variables
 let computerChoice = "";
 let result = null;
-let humanScore = "0";
-let computerScore = "0";
+// let humanScore = "0";
+// let computerScore = "0";
 
 // Written as function declaration
 function getRandomIntDec(max) {
@@ -62,54 +62,71 @@ function getHumanChoice() {
       - Make your function’s humanChoice parameter case-insensitive so that players can input “rock”, “ROCK”, “RocK”, or other variations.
       - Write the code for your playRound function to console.log a string value representing the round winner, such as: “You lose! Paper beats Rock”.
       - Increment the humanScore or computerScore variable based on the round winner.*/
-function playRound(humanChoice, computerChoice) {
-  humanChoice = humanChoice.toUpperCase();
-  let displayChoices = 
-  `You chose ${humanChoice}. 
-  The computer chose ${computerChoice}.`;
-  if (humanChoice == computerChoice) {
-    return console.log(
-      `You both chose the same.
-      This is a draw!`);
-  } else if (humanChoice == "ROCK" && computerChoice == "PAPER") {
-    computerScore++;
-    return console.log(
-      `${displayChoices}
-      You lose. PAPER beats ROCK!`);
-  } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS") {
-    humanScore++;
-    return console.log(
-      `${displayChoices}
-      You win. ROCK beats SCISSORS!`);
-  } else if (humanChoice == "PAPER" && computerChoice == "ROCK") {
-    humanScore++;
-    return console.log(
-      `${displayChoices}
-      You win. PAPER beats ROCK!`);
-  } else if (humanChoice == "PAPER" && computerChoice == "SCISSORS") {
-    computerScore++;
-    return console.log(
-      `${displayChoices}
-      You lose. SCISSORS cut PAPER!`);
-  } else if (humanChoice == "SCISSORS" && computerChoice == "ROCK") {
-    computerScore++;
-    return console.log(
-      `${displayChoices}
-      You lose. ROCK destroys SCISSORS!`);
-  } else if (humanChoice == "SCISSORS" && computerChoice == "PAPER") {
-    humanScore++;
-    return console.log(
-      `${displayChoices}
-      You win. SCISSORS cut PAPER in pieces!`);
-  } else {
-    return console.log("Oh noooo! Something must have gone wrong!");
-  }
-}
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+// playRound(humanSelection, computerSelection);
+// console.log(humanScore);
+// console.log(computerScore);
 
-console.log(computerScore);
-console.log(humanScore);
+function playGame() {
+  let computerScore = "0";
+  let humanScore = "0";
+  function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toUpperCase();
+    let displayChoices = `You chose ${humanChoice}. 
+  The computer chose ${computerChoice}.`;
+    if (humanChoice == computerChoice) {
+      return console.log(
+        `You both chose the same.
+      This is a draw!`
+      );
+    } else if (humanChoice == "ROCK" && computerChoice == "PAPER") {
+      computerScore++;
+      return console.log(
+        `${displayChoices}
+      You lose. PAPER beats ROCK!`
+      );
+    } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS") {
+      humanScore++;
+      return console.log(
+        `${displayChoices}
+      You win. ROCK beats SCISSORS!`
+      );
+    } else if (humanChoice == "PAPER" && computerChoice == "ROCK") {
+      humanScore++;
+      return console.log(
+        `${displayChoices}
+      You win. PAPER beats ROCK!`
+      );
+    } else if (humanChoice == "PAPER" && computerChoice == "SCISSORS") {
+      computerScore++;
+      return console.log(
+        `${displayChoices}
+      You lose. SCISSORS cut PAPER!`
+      );
+    } else if (humanChoice == "SCISSORS" && computerChoice == "ROCK") {
+      computerScore++;
+      return console.log(
+        `${displayChoices}
+      You lose. ROCK destroys SCISSORS!`
+      );
+    } else if (humanChoice == "SCISSORS" && computerChoice == "PAPER") {
+      humanScore++;
+      return console.log(
+        `${displayChoices}
+      You win. SCISSORS cut PAPER in pieces!`
+      );
+    } else {
+      return console.log("Oh noooo! Something must have gone wrong!");
+    }
+  }
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+}
+
+playGame();
