@@ -123,10 +123,31 @@ function playGame() {
     }
   }
   playRound(getHumanChoice(), getComputerChoice());
+  console.log(`The computer has a score of ${computerScore}`);
+  console.log(`Your score is ${humanScore}`);
   playRound(getHumanChoice(), getComputerChoice());
+  console.log(`The computer has a score of ${computerScore}`);
+  console.log(`Your score is ${humanScore}`);
   playRound(getHumanChoice(), getComputerChoice());
+  console.log(`The computer has a score of ${computerScore}`);
+  console.log(`Your score is ${humanScore}`);
   playRound(getHumanChoice(), getComputerChoice());
+  console.log(`The computer has a score of ${computerScore}`);
+  console.log(`Your score is ${humanScore}`);
   playRound(getHumanChoice(), getComputerChoice());
+  console.log(`The computer has a score of ${computerScore}`);
+  console.log(`Your score is ${humanScore}`);
+  if (computerScore > humanScore) {
+    console.log(
+      "This time you lost, refresh the page to start a new round, or do something more useful!"
+    );
+  } else if (humanScore > computerScore) {
+    console.log(
+      "And the winner is YOU, refresh the page to start a new round, or do something more useful!"
+    );
+  } else if (humanScore == computerScore) {
+    console.log("It's a draw king, start a new round by refreshing the page or die trying something else!")
+  }
 }
 
 playGame();
