@@ -33,8 +33,8 @@ function getHumanChoice() {
 }
 
 function playGame() {
-  let computerScore = "0";
-  let humanScore = "0";
+  let computerScore = 0;
+  let humanScore = 0;
 
   /*
   Problem solving
@@ -93,21 +93,11 @@ function playGame() {
   }
 
   // Play five rounds
-  playRound(getHumanChoice(), getComputerChoice());
-  console.log(`The computer has a score of ${computerScore}`);
-  console.log(`Your score is ${humanScore}`);
-  playRound(getHumanChoice(), getComputerChoice());
-  console.log(`The computer has a score of ${computerScore}`);
-  console.log(`Your score is ${humanScore}`);
-  playRound(getHumanChoice(), getComputerChoice());
-  console.log(`The computer has a score of ${computerScore}`);
-  console.log(`Your score is ${humanScore}`);
-  playRound(getHumanChoice(), getComputerChoice());
-  console.log(`The computer has a score of ${computerScore}`);
-  console.log(`Your score is ${humanScore}`);
-  playRound(getHumanChoice(), getComputerChoice());
-  console.log(`The computer has a score of ${computerScore}`);
-  console.log(`Your score is ${humanScore}`);
+  for (let i = 0; i < 5; i++) {
+    playRound(getHumanChoice(), getComputerChoice());
+    console.log(`The computer has a score of ${computerScore}`);
+    console.log(`Your score is ${humanScore}`);
+  }
 
   if (computerScore > humanScore) {
     console.log(
