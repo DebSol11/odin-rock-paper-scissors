@@ -1,8 +1,6 @@
 // Declaration and initialization of global variables
 let computerChoice = "";
 let result = null;
-// let humanScore = "0";
-// let computerScore = "0";
 
 // Written as function declaration
 function getRandomIntDec(max) {
@@ -44,10 +42,11 @@ function getHumanChoice() {
   return userInput;
 }
 
-// console.log("You chose " + getHumanChoice());
-// console.log("The computer chose " + getComputerChoice());
-
-/*Problem solving
+function playGame() {
+  let computerScore = "0";
+  let humanScore = "0";
+  
+  /*Problem solving
   1. Understand the problem:
       How to write the code to play a single round of rock, paper, scissors against a NPC 
       (≡ = Definition = Non Player Character)?
@@ -62,17 +61,6 @@ function getHumanChoice() {
       - Make your function’s humanChoice parameter case-insensitive so that players can input “rock”, “ROCK”, “RocK”, or other variations.
       - Write the code for your playRound function to console.log a string value representing the round winner, such as: “You lose! Paper beats Rock”.
       - Increment the humanScore or computerScore variable based on the round winner.*/
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-// playRound(humanSelection, computerSelection);
-// console.log(humanScore);
-// console.log(computerScore);
-
-function playGame() {
-  let computerScore = "0";
-  let humanScore = "0";
   function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toUpperCase();
     let displayChoices = `You chose ${humanChoice}. 
@@ -122,6 +110,7 @@ function playGame() {
       return console.log("Oh noooo! Something must have gone wrong!");
     }
   }
+
   playRound(getHumanChoice(), getComputerChoice());
   console.log(`The computer has a score of ${computerScore}`);
   console.log(`Your score is ${humanScore}`);
@@ -137,6 +126,7 @@ function playGame() {
   playRound(getHumanChoice(), getComputerChoice());
   console.log(`The computer has a score of ${computerScore}`);
   console.log(`Your score is ${humanScore}`);
+
   if (computerScore > humanScore) {
     console.log(
       "This time you lost, refresh the page to start a new round, or do something more useful!"
@@ -146,7 +136,9 @@ function playGame() {
       "And the winner is YOU, refresh the page to start a new round, or do something more useful!"
     );
   } else if (humanScore == computerScore) {
-    console.log("It's a draw king, start a new round by refreshing the page or die trying something else!")
+    console.log(
+      "It's a draw king, start a new round by refreshing the page or die trying something else!"
+    );
   }
 }
 
