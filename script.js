@@ -3,6 +3,12 @@ let computerChoice = "";
 let result = null;
 let humanClick = "test";
 
+let resultsContainer = document.createElement("div");
+resultsContainer.style.backgroundColor = "pink";
+resultsContainer.textContent = "RESULTS";
+let htmlBody = document.querySelector("body");
+htmlBody.appendChild(resultsContainer);
+
 const rockBtn = document.querySelector("#rock");
 
 rockBtn.addEventListener("click", () => {
@@ -48,6 +54,10 @@ function getComputerChoice() {
   }
 }
 
+function appendResult() {
+  box = document.createElement("div");
+}
+
 function playRound(humanChoice, computerChoice) {
   humanChoice = humanChoice.toUpperCase();
   let humanScore = 0;
@@ -55,48 +65,46 @@ function playRound(humanChoice, computerChoice) {
   let displayChoices = `You chose ${humanChoice}.
   The computer chose ${computerChoice}.`;
   if (humanChoice == computerChoice) {
-    return console.log(
-      `You both chose the same.
-      This is a draw!`
-    );
+    return (resultsContainer.textContent = `You both chose the same.
+      This is a draw!`);
   } else if (humanChoice == "ROCK" && computerChoice == "PAPER") {
     computerScore++;
-    return console.log(
+    return (resultsContainer.textContent =
       `${displayChoices}
       You lose. PAPER beats ROCK!`
     );
   } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS") {
     humanScore++;
-    return console.log(
+    return (resultsContainer.textContent =
       `${displayChoices}
       You win. ROCK beats SCISSORS!`
     );
   } else if (humanChoice == "PAPER" && computerChoice == "ROCK") {
     humanScore++;
-    return console.log(
+    return (resultsContainer.textContent =
       `${displayChoices}
       You win. PAPER beats ROCK!`
     );
   } else if (humanChoice == "PAPER" && computerChoice == "SCISSORS") {
     computerScore++;
-    return console.log(
+    return (resultsContainer.textContent =
       `${displayChoices}
       You lose. SCISSORS cut PAPER!`
     );
   } else if (humanChoice == "SCISSORS" && computerChoice == "ROCK") {
     computerScore++;
-    return console.log(
+    return (resultsContainer.textContent =
       `${displayChoices}
       You lose. ROCK destroys SCISSORS!`
     );
   } else if (humanChoice == "SCISSORS" && computerChoice == "PAPER") {
     humanScore++;
-    return console.log(
+    return (resultsContainer.textContent =
       `${displayChoices}
       You win. SCISSORS cut PAPER in pieces!`
     );
   } else {
-    return console.log("Oh noooo! Something must have gone wrong!");
+    return (resultsContainer.textContent ="Oh noooo! Something must have gone wrong!");
   }
 }
 
