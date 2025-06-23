@@ -2,18 +2,27 @@
 let computerChoice = "";
 let result = null;
 let humanClick = "test";
+let humanScore = 0;
+let computerScore = 0;
 
 let resultsContainer = document.createElement("div");
 resultsContainer.style.backgroundColor = "pink";
 resultsContainer.textContent = "RESULTS";
 let htmlBody = document.querySelector("body");
 htmlBody.appendChild(resultsContainer);
+let messageContainer = document.createElement("div");
+messageContainer.setAttribute("style", "background: green; color: white");
+messageContainer.textContent = "We play until either you or the PC have five points!"
+htmlBody.appendChild(messageContainer);
+let scoreContainer = document.createElement("div");
+scoreContainer.style.backgroundColor = "yellow";
+scoreContainer.textContent = "SCORE";
+htmlBody.appendChild(scoreContainer);
 
 const rockBtn = document.querySelector("#rock");
 
 rockBtn.addEventListener("click", () => {
   humanClick = "rock";
-  getComputerChoice();
   playRound(humanClick, getComputerChoice());
 });
 
@@ -22,12 +31,10 @@ const scissorsBtn = document.querySelector("#scissors");
 
 paperBtn.addEventListener("click", () => {
   humanClick = "paper";
-  getComputerChoice();
   playRound(humanClick, getComputerChoice());
 });
 scissorsBtn.addEventListener("click", () => {
   humanClick = "scissors";
-  getComputerChoice();
   playRound(humanClick, getComputerChoice());
 });
 
@@ -60,8 +67,6 @@ function appendResult() {
 
 function playRound(humanChoice, computerChoice) {
   humanChoice = humanChoice.toUpperCase();
-  let humanScore = 0;
-  let computerScore = 0;
   let displayChoices = `You chose ${humanChoice}.
   The computer chose ${computerChoice}.`;
   if (humanChoice == computerChoice) {
@@ -69,125 +74,50 @@ function playRound(humanChoice, computerChoice) {
       This is a draw!`);
   } else if (humanChoice == "ROCK" && computerChoice == "PAPER") {
     computerScore++;
-    return (resultsContainer.textContent =
-      `${displayChoices}
-      You lose. PAPER beats ROCK!`
-    );
+    resultsContainer.textContent = `${displayChoices}
+      You lose. PAPER beats ROCK!`;
+    scoreContainer.textContent = `Your score is ${humanScore}, the score of the PC is ${computerScore}`;
   } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS") {
     humanScore++;
-    return (resultsContainer.textContent =
-      `${displayChoices}
-      You win. ROCK beats SCISSORS!`
-    );
+    resultsContainer.textContent = `${displayChoices}
+      You win. ROCK beats SCISSORS!`;
+    scoreContainer.textContent = `Your score is ${humanScore}, the score of the PC is ${computerScore}`;
   } else if (humanChoice == "PAPER" && computerChoice == "ROCK") {
     humanScore++;
-    return (resultsContainer.textContent =
-      `${displayChoices}
-      You win. PAPER beats ROCK!`
-    );
+    resultsContainer.textContent = `${displayChoices}
+      You win. PAPER beats ROCK!`;
+    scoreContainer.textContent = `Your score is ${humanScore}, the score of the PC is ${computerScore}`;
   } else if (humanChoice == "PAPER" && computerChoice == "SCISSORS") {
     computerScore++;
-    return (resultsContainer.textContent =
-      `${displayChoices}
-      You lose. SCISSORS cut PAPER!`
-    );
+    resultsContainer.textContent = `${displayChoices}
+      You lose. SCISSORS cut PAPER!`;
+    scoreContainer.textContent = `Your score is ${humanScore}, the score of the PC is ${computerScore}`;
   } else if (humanChoice == "SCISSORS" && computerChoice == "ROCK") {
     computerScore++;
-    return (resultsContainer.textContent =
-      `${displayChoices}
-      You lose. ROCK destroys SCISSORS!`
-    );
+    resultsContainer.textContent = `${displayChoices}
+      You lose. ROCK destroys SCISSORS!`;
+    scoreContainer.textContent = `Your score is ${humanScore}, the score of the PC is ${computerScore}`;
   } else if (humanChoice == "SCISSORS" && computerChoice == "PAPER") {
     humanScore++;
-    return (resultsContainer.textContent =
-      `${displayChoices}
-      You win. SCISSORS cut PAPER in pieces!`
-    );
+    resultsContainer.textContent = `${displayChoices}
+      You win. SCISSORS cut PAPER in pieces!`;
+    scoreContainer.textContent = `Your score is ${humanScore}, the score of the PC is ${computerScore}`;
   } else {
-    return (resultsContainer.textContent ="Oh noooo! Something must have gone wrong!");
+    return (resultsContainer.textContent =
+      "Oh noooo! Something must have gone wrong!");
   }
 }
 
-// function playGame() {
-//   let computerScore = 0;
-//   let humanScore = 0;
-
-/*
-  Problem solving
-  1. Understand the problem
-  2. Plan
-  3. Pseudocode 
-  */
-// function playRound(humanChoice, computerChoice) {
-//   humanChoice = humanChoice.toUpperCase();
-//   let displayChoices = `You chose ${humanChoice}.
-// The computer chose ${computerChoice}.`;
-//   if (humanChoice == computerChoice) {
-//     return console.log(
-//       `You both chose the same.
-//     This is a draw!`
-//     );
-//   } else if (humanChoice == "ROCK" && computerChoice == "PAPER") {
-//     computerScore++;
-//     return console.log(
-//       `${displayChoices}
-//     You lose. PAPER beats ROCK!`
-//     );
-//   } else if (humanChoice == "ROCK" && computerChoice == "SCISSORS") {
-//     humanScore++;
-//     return console.log(
-//       `${displayChoices}
-//     You win. ROCK beats SCISSORS!`
-//     );
-//   } else if (humanChoice == "PAPER" && computerChoice == "ROCK") {
-//     humanScore++;
-//     return console.log(
-//       `${displayChoices}
-//     You win. PAPER beats ROCK!`
-//     );
-//   } else if (humanChoice == "PAPER" && computerChoice == "SCISSORS") {
-//     computerScore++;
-//     return console.log(
-//       `${displayChoices}
-//     You lose. SCISSORS cut PAPER!`
-//     );
-//   } else if (humanChoice == "SCISSORS" && computerChoice == "ROCK") {
-//     computerScore++;
-//     return console.log(
-//       `${displayChoices}
-//     You lose. ROCK destroys SCISSORS!`
-//     );
-//   } else if (humanChoice == "SCISSORS" && computerChoice == "PAPER") {
-//     humanScore++;
-//     return console.log(
-//       `${displayChoices}
-//     You win. SCISSORS cut PAPER in pieces!`
-//     );
-//   } else {
-//     return console.log("Oh noooo! Something must have gone wrong!");
-//   }
-// }
-
-//   // Play five rounds
-//   for (let i = 0; i < 5; i++) {
-//     playRound(getHumanChoice(), getComputerChoice());
-//     console.log(`The computer has a score of ${computerScore}`);
-//     console.log(`Your score is ${humanScore}`);
-//   }
-
-//   if (computerScore > humanScore) {
-//     console.log(
-//       "This time you lost, refresh the page to start a new round, or do something more useful!"
-//     );
-//   } else if (humanScore > computerScore) {
-//     console.log(
-//       "And the winner is YOU, refresh the page to start a new round, or do something more useful!"
-//     );
-//   } else if (humanScore == computerScore) {
-//     console.log(
-//       "It's a draw king, start a new round by refreshing the page or die trying something else!"
-//     );
-//   }
-// }
-
-// playGame();
+  // if (computerScore > humanScore) {
+  //   console.log(
+  //     "This time you lost, refresh the page to start a new round, or do something more useful!"
+  //   );
+  // } else if (humanScore > computerScore) {
+  //   console.log(
+  //     "And the winner is YOU, refresh the page to start a new round, or do something more useful!"
+  //   );
+  // } else if (humanScore == computerScore) {
+  //   console.log(
+  //     "It's a draw king, start a new round by refreshing the page or die trying something else!"
+  //   );
+  // }
